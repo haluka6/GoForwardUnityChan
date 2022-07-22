@@ -11,6 +11,7 @@ public class CubeController : MonoBehaviour
     private float deadLine = -10;
 
     public AudioClip sound1;
+
     AudioSource audioSource; 
 
     // Start is called before the first frame update
@@ -35,7 +36,10 @@ public class CubeController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        //音(sound1)を鳴らす
-        audioSource.PlayOneShot(sound1);
+        if (other.gameObject.tag == "GroundTag" || other.gameObject.tag == "CubeTag")
+        {
+            //音(sound1)を鳴らす
+            audioSource.PlayOneShot(sound1);
+        }
     }
 }
